@@ -12,8 +12,6 @@ import {
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-
-
 export const CarouselContext = createContext<{
   onCardClose: (index: number) => void;
   currentIndex: number;
@@ -24,49 +22,37 @@ export const CarouselContext = createContext<{
 
 interface CarouselProps {
   items: React.ReactNode[];
-  initialScroll?: number;
 }
 
-export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
-  const carouselRef = React.useRef<HTMLDivElement>(null);
-
+// Renamed conceptually: This is now a Grid, not a Carousel.
+// Keeping export name for compatibility with ServicesOverview.
+export const Carousel = ({ items }: CarouselProps) => {
   return (
     <CarouselContext.Provider value={{ onCardClose: () => {}, currentIndex: 0 }}>
-        <div className="relative w-full">
-            <div
-                className="flex w-full overflow-x-scroll overscroll-x-auto py-10 md:py-20 md:pt-2 scroll-smooth [scrollbar-width:none]"
-                ref={carouselRef}
+      <div className="w-full max-w-[1000px] mx-auto px-6 md:px-8 pb-20 pt-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6">
+          {items.map((item, index) => (
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.5,
+                  delay: 0.1 * index,
+                  ease: "easeOut",
+                },
+              }}
+              key={"card" + index}
             >
-                <div
-                    className={cn(
-                        "flex flex-row justify-start gap-4",
-                        "pl-[max(1.5rem,calc((100vw-1000px)/2+1.5rem))] md:pl-[max(2rem,calc((100vw-1000px)/2+2rem))]"
-                    )}
-                >
-                    {items.map((item, index) => (
-                        <motion.div
-                            initial={{
-                                opacity: 0,
-                                y: 20,
-                            }}
-                            animate={{
-                                opacity: 1,
-                                y: 0,
-                                transition: {
-                                    duration: 0.5,
-                                    delay: 0.2 * index,
-                                    ease: "easeOut",
-                                },
-                            }}
-                            key={"card" + index}
-                            className="last:pr-[5%] md:last:pr-[33%] rounded-3xl"
-                        >
-                            {item}
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
+              {item}
+            </motion.div>
+          ))}
         </div>
+      </div>
     </CarouselContext.Provider>
   );
 };
@@ -86,14 +72,29 @@ export const CarouselCard = ({
   const { onCardClose } = useContext(CarouselContext);
 
   useEffect(() => {
-    onCardClose(index);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
+
+  useOutsideClick(containerRef, () => setOpen(false));
 
   return (
     <>
       <AnimatePresence>
         {open && (
-          <div className="fixed inset-0 z-50 h-screen overflow-auto">
+          <div className="fixed inset-0 z-50 h-screen overflow-auto p-4 md:p-10">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -106,27 +107,41 @@ export const CarouselCard = ({
               exit={{ opacity: 0 }}
               ref={containerRef}
               layoutId={layout ? `card-${card.title}` : undefined}
-              className="max-w-5xl mx-auto bg-white dark:bg-neutral-900 h-fit  z-[60] my-10 p-4 md:p-10 rounded-3xl font-sans relative"
+              className="max-w-5xl mx-auto bg-neutral-900 h-fit  z-[60] my-10 rounded-3xl font-sans relative overflow-hidden"
             >
               <button
-                className="sticky top-4 h-8 w-8 right-0 ml-auto bg-black dark:bg-white rounded-full flex items-center justify-center"
+                className="sticky top-4 h-8 w-8 right-0 ml-auto bg-transparent border border-white/20 rounded-full flex items-center justify-center z-50 mr-4 mt-4"
                 onClick={() => setOpen(false)}
               >
-                <X className="h-6 w-6 text-neutral-100 dark:text-neutral-900" />
+                <X className="h-6 w-6 text-white/20" />
               </button>
-              <motion.p
-                layoutId={layout ? `category-${card.title}` : undefined}
-                className="text-base font-medium text-black dark:text-white"
-              >
-                {card.category}
-              </motion.p>
-              <motion.p
-                layoutId={layout ? `title-${card.title}` : undefined}
-                className="text-2xl md:text-5xl font-semibold text-neutral-700 mt-4 dark:text-white"
-              >
-                {card.title}
-              </motion.p>
-              <div className="py-10">{card.content}</div>
+              
+              <motion.div
+                layoutId={layout ? `image-${card.title}` : undefined}
+                className={cn(
+                    "h-80 w-full md:rounded-t-3xl bg-gradient-to-br absolute top-0 inset-x-0 z-0",
+                    index % 4 === 0 ? "from-purple-500 to-blue-500" :
+                    index % 4 === 1 ? "from-blue-500 to-cyan-500" :
+                    index % 4 === 2 ? "from-cyan-500 to-teal-500" :
+                    "from-teal-500 to-emerald-500"
+                )}
+              />
+
+              <div className="p-4 md:p-10 relative z-10 mt-64 border-t border-white/10 bg-neutral-900/50 backdrop-blur-md">
+                <motion.p
+                    layoutId={layout ? `category-${card.title}` : undefined}
+                    className="text-base font-medium text-white"
+                >
+                    {card.category}
+                </motion.p>
+                <motion.p
+                    layoutId={layout ? `title-${card.title}` : undefined}
+                    className="text-2xl md:text-5xl font-semibold text-white mt-4"
+                >
+                    {card.title}
+                </motion.p>
+                <div className="py-10 text-neutral-200">{card.content}</div>
+              </div>
             </motion.div>
           </div>
         )}
@@ -134,16 +149,10 @@ export const CarouselCard = ({
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={() => setOpen(true)}
-        className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-48 w-56 md:h-[24rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
+        className="rounded-3xl bg-gray-100 dark:bg-neutral-900 w-full h-72 md:h-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8 h-full flex flex-col justify-end items-start w-full">
-          <motion.p
-            layoutId={layout ? `category-${card.category}` : undefined}
-            className="text-white text-sm md:text-base font-medium font-sans text-left"
-          >
-            {card.category}
-          </motion.p>
           <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
             className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2"
@@ -152,7 +161,8 @@ export const CarouselCard = ({
           </motion.p>
         </div>
         {/* Placeholder gradient since we don't have images yet */}
-         <div 
+         <motion.div 
+            layoutId={layout ? `image-${card.title}` : undefined}
             className={cn(
                 "absolute inset-0 z-10 bg-gradient-to-br",
                 index % 4 === 0 ? "from-purple-500 to-blue-500" :
@@ -165,7 +175,6 @@ export const CarouselCard = ({
     </>
   );
 };
-
 
 
 export type CardData = {
