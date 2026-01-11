@@ -12,7 +12,7 @@ export function ServicesOverview() {
       key={service.id}
       layout={true}
       card={{
-        src: `/services/${service.id}.png`,
+        src: `/services/service-${index + 1}.svg`,
         title: service.title,
         category: "Service",
         content: (

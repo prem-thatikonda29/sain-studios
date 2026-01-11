@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import {
   X,
+  Plus,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
@@ -119,10 +120,6 @@ export const CarouselCard = ({
               <motion.div
                 layoutId={layout ? `image-${card.title}` : undefined}
                 className="h-80 w-full md:rounded-t-3xl absolute top-0 inset-x-0 z-0"
-                style={{
-                  maskImage: 'linear-gradient(to bottom, #000 70%, transparent 90%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, #000 70%, transparent 90%)',
-                }}
               >
                 <img 
                    src={card.src} 
@@ -131,13 +128,7 @@ export const CarouselCard = ({
                 />
               </motion.div>
 
-              <div className="p-4 md:p-10 relative z-10 mt-64 border-t border-white/10 bg-neutral-900/50 backdrop-blur-md">
-                <motion.p
-                    layoutId={layout ? `category-${card.title}` : undefined}
-                    className="text-base font-medium text-white"
-                >
-                    {card.category}
-                </motion.p>
+              <div className="p-4 md:p-10 relative z-10 mt-64 bg-neutral-900/50 backdrop-blur-md">
                 <motion.p
                     layoutId={layout ? `title-${card.title}` : undefined}
                     className="text-2xl md:text-5xl font-semibold text-white mt-4"
@@ -153,25 +144,26 @@ export const CarouselCard = ({
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={() => setOpen(true)}
-        className="rounded-3xl bg-gray-100 dark:bg-neutral-900 w-full h-72 md:h-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
+        className="rounded-3xl bg-neutral-900 w-full h-72 md:h-96 overflow-hidden flex flex-col items-start justify-start relative z-10 group"
       >
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 z-30 pointer-events-none" />
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
-        <div className="relative z-40 p-8 h-full flex flex-col justify-end items-start w-full">
+        <div className="relative z-40 p-8 md:p-12 h-full flex flex-col justify-end items-start w-full">
           <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
-            className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2"
+            className="text-white text-xl md:text-2xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2"
           >
             {card.title}
           </motion.p>
+          <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12">
+            <div className="w-10 h-10 rounded-full flex items-center justify-center border border-white/40 group-hover:border-transparent group-hover:bg-white/10 transition-all duration-300">
+              <Plus className="w-5 h-5 text-white/40 group-hover:text-white transition-colors duration-300" />
+            </div>
+          </div>
         </div>
-        {/* Placeholder gradient since we don't have images yet */}
          <motion.div 
             layoutId={layout ? `image-${card.title}` : undefined}
             className="absolute inset-0 z-10"
-            style={{
-              maskImage: 'linear-gradient(to bottom, #000 70%, transparent 90%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, #000 70%, transparent 90%)',
-            }}
          >
             <img 
                src={card.src} 
