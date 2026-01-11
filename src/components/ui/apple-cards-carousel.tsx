@@ -118,14 +118,18 @@ export const CarouselCard = ({
               
               <motion.div
                 layoutId={layout ? `image-${card.title}` : undefined}
-                className={cn(
-                    "h-80 w-full md:rounded-t-3xl bg-gradient-to-br absolute top-0 inset-x-0 z-0",
-                    index % 4 === 0 ? "from-purple-500 to-blue-500" :
-                    index % 4 === 1 ? "from-blue-500 to-cyan-500" :
-                    index % 4 === 2 ? "from-cyan-500 to-teal-500" :
-                    "from-teal-500 to-emerald-500"
-                )}
-              />
+                className="h-80 w-full md:rounded-t-3xl absolute top-0 inset-x-0 z-0"
+                style={{
+                  maskImage: 'linear-gradient(to bottom, #000 70%, transparent 90%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, #000 70%, transparent 90%)',
+                }}
+              >
+                <img 
+                   src={card.src} 
+                   alt={card.title} 
+                   className="object-cover w-full h-full"
+                />
+              </motion.div>
 
               <div className="p-4 md:p-10 relative z-10 mt-64 border-t border-white/10 bg-neutral-900/50 backdrop-blur-md">
                 <motion.p
@@ -163,14 +167,18 @@ export const CarouselCard = ({
         {/* Placeholder gradient since we don't have images yet */}
          <motion.div 
             layoutId={layout ? `image-${card.title}` : undefined}
-            className={cn(
-                "absolute inset-0 z-10 bg-gradient-to-br",
-                index % 4 === 0 ? "from-purple-500 to-blue-500" :
-                index % 4 === 1 ? "from-blue-500 to-cyan-500" :
-                index % 4 === 2 ? "from-cyan-500 to-teal-500" :
-                "from-teal-500 to-emerald-500"
-            )}
-         />
+            className="absolute inset-0 z-10"
+            style={{
+              maskImage: 'linear-gradient(to bottom, #000 70%, transparent 90%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, #000 70%, transparent 90%)',
+            }}
+         >
+            <img 
+               src={card.src} 
+               alt={card.title} 
+               className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+            />
+         </motion.div>
       </motion.button>
     </>
   );

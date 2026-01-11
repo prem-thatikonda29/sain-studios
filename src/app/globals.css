@@ -4,12 +4,12 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Brand Colors - Keep for custom use */
-  --color-accent-blue: #4C7DFF;
-  --color-accent-violet: #8A5CFF;
+  /* Brand Colors - Monochrome */
+  --color-accent-blue: #FFFFFF;
+  --color-accent-violet: #A7A9B0;
   --color-background-secondary: #16181D;
-  --color-success: #3CCB7F;
-  --color-error: #F05A5A;
+  --color-success: #FFFFFF;
+  --color-error: #A7A9B0;
 
   /* Typography */
   --font-sans: "Inter Variable", "Inter", system-ui, sans-serif;
@@ -40,7 +40,7 @@
 
   /* Shadows */
   --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-glow: 0 0 40px rgba(76, 125, 255, 0.15);
+  --shadow-glow: 0 0 40px rgba(255, 255, 255, 0.05);
 }
 
 html {
@@ -65,9 +65,9 @@ html {
   background: rgba(167, 169, 176, 0.5);
 }
 
-/* Gradient text utility */
+/* Gradient text utility - Monochrome */
 .text-gradient {
-  background: linear-gradient(135deg, #4C7DFF 0%, #8A5CFF 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #A7A9B0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -83,8 +83,8 @@ html {
 
 /* Selection styling */
 ::selection {
-  background-color: #4C7DFF;
-  color: #F5F5F7;
+  background-color: #FFFFFF;
+  color: #0B0C0E;
 }
 
 @theme inline {
@@ -141,9 +141,9 @@ html {
   /* Popover */
   --popover: #16181D;
   --popover-foreground: #F5F5F7;
-  /* Primary: Electric Blue gradient */
-  --primary: #4C7DFF;
-  --primary-foreground: #FFFFFF;
+  /* Primary: White */
+  --primary: #FFFFFF;
+  --primary-foreground: #0B0C0E;
   /* Secondary: Dark gray */
   --secondary: #16181D;
   --secondary-foreground: #F5F5F7;
@@ -158,22 +158,22 @@ html {
   /* Border */
   --border: rgba(167, 169, 176, 0.1);
   --input: rgba(167, 169, 176, 0.15);
-  --ring: #4C7DFF;
-  /* Charts */
-  --chart-1: #4C7DFF;
-  --chart-2: #8A5CFF;
-  --chart-3: #3CCB7F;
-  --chart-4: #F05A5A;
-  --chart-5: #A7A9B0;
+  --ring: #FFFFFF;
+  /* Charts - Monochrome */
+  --chart-1: #FFFFFF;
+  --chart-2: #A7A9B0;
+  --chart-3: #71717A;
+  --chart-4: #52525B;
+  --chart-5: #3F3F46;
   /* Sidebar */
   --sidebar: #16181D;
   --sidebar-foreground: #F5F5F7;
-  --sidebar-primary: #4C7DFF;
-  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-primary: #FFFFFF;
+  --sidebar-primary-foreground: #0B0C0E;
   --sidebar-accent: #16181D;
   --sidebar-accent-foreground: #F5F5F7;
   --sidebar-border: rgba(167, 169, 176, 0.1);
-  --sidebar-ring: #4C7DFF;
+  --sidebar-ring: #FFFFFF;
 }
 
 @layer base {

@@ -34,10 +34,6 @@ export function Footer() {
               </div>
               <span>SAIN STUDIOS</span>
             </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              Premium video content creation for creators who want to stand out.
-              Transform your content with professional editing.
-            </p>
           </div>
 
           {/* Pages */}

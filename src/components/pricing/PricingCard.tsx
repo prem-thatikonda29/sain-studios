@@ -33,7 +33,7 @@ export function PricingCard({ tier, index = 0 }: PricingCardProps) {
       >
         {tier.popular && (
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-            <Badge className="bg-gradient-to-r from-primary to-[#8A5CFF] border-0">
+            <Badge className="bg-gradient-to-r from-white to-neutral-400 text-black border-0">
               #bestdeal
             </Badge>
           </div>

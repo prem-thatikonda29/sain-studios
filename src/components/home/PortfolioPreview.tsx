@@ -13,25 +13,25 @@ const previewItems = [
     id: 1,
     title: "Gaming Highlights",
     category: "Gaming",
-    gradient: "from-purple-500/20 to-blue-500/20",
+    gradient: "from-white/10 to-white/5",
   },
   {
     id: 2,
     title: "Reaction Edit",
     category: "Reaction / Vlog",
-    gradient: "from-orange-500/20 to-red-500/20",
+    gradient: "from-neutral-800 to-neutral-900",
   },
   {
     id: 3,
     title: "Documentary Short",
     category: "Documentary",
-    gradient: "from-green-500/20 to-teal-500/20",
+    gradient: "from-white/5 to-white/10",
   },
   {
     id: 4,
     title: "Recipe Video",
     category: "Cooking",
-    gradient: "from-yellow-500/20 to-orange-500/20",
+    gradient: "from-neutral-900 to-neutral-800",
   },
 ];
 

@@ -37,7 +37,7 @@ export default function ProcessPage() {
               >
                 {/* Timeline line */}
                 {index < processSteps.length - 1 && (
-                  <div className="absolute left-[18px] top-10 w-0.5 h-full bg-gradient-to-b from-primary to-[#8A5CFF]/30" />
+                  <div className="absolute left-[18px] top-10 w-0.5 h-full bg-gradient-to-b from-white to-white/10" />
                 )}
 
                 {/* Step number */}

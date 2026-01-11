@@ -12,7 +12,7 @@ export function ServicesOverview() {
       key={service.id}
       layout={true}
       card={{
-        src: "", // Placeholder or we can add images to data/services.ts later
+        src: `/services/${service.id}.png`,
         title: service.title,
         category: "Service",
         content: (

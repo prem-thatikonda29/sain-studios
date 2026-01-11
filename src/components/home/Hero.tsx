@@ -10,8 +10,8 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#8A5CFF]/10 rounded-full blur-[120px]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-[120px]" />
 
       <Container className="relative z-10">
         <div className="max-w-4xl">

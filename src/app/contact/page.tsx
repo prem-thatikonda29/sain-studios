@@ -57,9 +57,9 @@ export default function ContactPage() {
               {/* Contact Form */}
               <div className="lg:col-span-3">
                 {isSubmitted ? (
-                  <Card className="p-8 text-center border-[#3CCB7F]/20 bg-[#3CCB7F]/5">
+                  <Card className="p-8 text-center border-white/20 bg-white/5">
                     <CardContent className="pt-0">
-                      <CheckCircle className="w-12 h-12 mx-auto text-[#3CCB7F] mb-4" />
+                      <CheckCircle className="w-12 h-12 mx-auto text-white mb-4" />
                       <h3 className="text-xl font-semibold text-foreground mb-2">
                         Message Sent!
                       </h3>
