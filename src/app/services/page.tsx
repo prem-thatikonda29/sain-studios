@@ -41,9 +41,8 @@ export default function ServicesPage() {
             {services.map((service, index) => (
               <div
                 key={service.id}
-                className="rounded-3xl bg-neutral-900 w-full min-h-[420px] overflow-hidden flex flex-col items-start justify-start relative z-10 group"
+                className="rounded-3xl bg-neutral-900 w-full min-h-[420px] overflow-hidden flex flex-col items-start justify-start relative z-10 group border border-white/5"
               >
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 z-25 pointer-events-none" />
                 {/* Image background */}
                 <div className="absolute inset-0 z-10">
                     <img 

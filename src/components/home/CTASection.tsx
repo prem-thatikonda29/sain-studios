@@ -11,10 +11,10 @@ export function CTASection() {
       <Container>
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-20">
           <div className="max-w-xl">
-            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight">
-              Ready to transform your content?
+            <h2 className="text-3xl sm:text-4xl md:text-section font-semibold text-white tracking-tight leading-tight">
+              Ready to elevate your content?
             </h2>
-            <p className="mt-8 text-md text-muted-foreground leading-relaxed">
+            <p className="mt-8 text-sm md:text-base text-muted-foreground leading-relaxed">
               Join 50+ creators who trust Sain Studios to deliver professional,
               engaging content that grows their audience.
             </p>

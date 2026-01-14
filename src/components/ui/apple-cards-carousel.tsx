@@ -131,7 +131,7 @@ export const CarouselCard = ({
               <div className="p-4 md:p-10 relative z-10 mt-64 bg-neutral-900/50 backdrop-blur-md">
                 <motion.p
                     layoutId={layout ? `title-${card.title}` : undefined}
-                    className="text-2xl md:text-5xl font-semibold text-white mt-4"
+                    className="text-xl md:text-4xl font-semibold text-white mt-4"
                 >
                     {card.title}
                 </motion.p>

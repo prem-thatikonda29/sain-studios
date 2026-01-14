@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/button";
@@ -45,8 +45,11 @@ export function PortfolioPreview() {
             title="Our recent work"
             description="See how we've helped creators transform their content and grow their audience."
           />
-          <Button variant="outline" asChild>
-            <Link href="/work">View All Work</Link>
+          <Button variant="underline" asChild>
+            <Link href="/work" className="group">
+              View All Work
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
           </Button>
         </div>
 

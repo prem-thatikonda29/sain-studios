@@ -45,7 +45,7 @@ export default function WorkPage() {
                 variant={activeCategory === category.id ? "default" : "outline"}
                 onClick={() => setActiveCategory(category.id)}
                 className={cn(
-                  "rounded-full",
+                  "rounded-full hover:cursor-pointer",
                   activeCategory === category.id && "bg-primary"
                 )}
               >
