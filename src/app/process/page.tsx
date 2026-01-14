@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { processSteps } from "@/data/process";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import { CallToAction } from "@/components/layout/CallToAction";
 
 export default function ProcessPage() {
   return (
@@ -76,20 +77,8 @@ export default function ProcessPage() {
           </div>
 
           {/* CTA */}
-          <div className="mt-32 text-center">
-            <div className="max-w-3xl mx-auto bg-gradient-to-br from-primary/10 to-transparent p-12 rounded-[2rem] border border-primary/20">
-              <h3 className="text-3xl font-bold text-foreground mb-4">
-                Ready to start your project?
-              </h3>
-              <p className="text-muted-foreground mb-8 max-w-lg mx-auto text-lg">
-                Book a free discovery call and let&apos;s discuss how we can help
-                you create amazing content.
-              </p>
-              <Button size="lg" className="rounded-full px-8" asChild>
-                <Link href="/contact">Get Started</Link>
-              </Button>
-            </div>
-          </div>
+
+          <CallToAction />
         </Container>
       </main>
       <Footer />

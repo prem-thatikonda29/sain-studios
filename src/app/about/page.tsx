@@ -7,6 +7,7 @@ import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { CallToAction } from "@/components/layout/CallToAction";
 
 export const metadata: Metadata = {
   title: "About",
@@ -109,18 +110,11 @@ export default function AboutPage() {
           </div>
 
           {/* CTA */}
-          <div className="mt-24 text-center">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Let&apos;s work together
-            </h3>
-            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Ready to take your content to the next level? We&apos;d love to
-              hear from you.
-            </p>
-            <Button size="lg" asChild>
-              <Link href="/contact">Get in Touch</Link>
-            </Button>
-          </div>
+          <CallToAction
+            title="Let's work together"
+            description="Ready to take your content to the next level? We'd love to hear from you."
+            buttonText="Get in Touch"
+          />
         </Container>
       </main>
       <Footer />

@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { services, serviceCategories } from "@/data/services";
+import { CallToAction } from "@/components/layout/CallToAction";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -101,18 +102,7 @@ export default function ServicesPage() {
           </div>
 
           {/* CTA */}
-          <div className="mt-24 text-center">
-            <h3 className="text-2xl font-semibold text-foreground mb-4">
-              Ready to get started?
-            </h3>
-            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Let&apos;s discuss your project and find the perfect solution for
-              your content needs.
-            </p>
-            <Button size="lg" asChild>
-              <Link href="/contact">Contact Us</Link>
-            </Button>
-          </div>
+          <CallToAction />
         </Container>
       </main>
       <Footer />
