@@ -6,8 +6,9 @@ import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { CallToAction } from "@/components/layout/CallToAction";
+
+
 
 export const metadata: Metadata = {
   title: "About",

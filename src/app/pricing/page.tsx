@@ -6,6 +6,13 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
 import { PricingCard } from "@/components/pricing/PricingCard";
 import { pricingTiers } from "@/data/pricing";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { faqs } from "@/data/faqs";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -34,43 +41,21 @@ export default function PricingPage() {
 
           {/* FAQ */}
           <div className="mt-24 max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold text-foreground text-center mb-12">
-              Frequently Asked Questions
-            </h3>
-            <div className="space-y-6">
-              <Card>
-                <CardContent className="pt-6">
-                  <h4 className="font-semibold text-foreground">
-                    What&apos;s the turnaround time?
-                  </h4>
-                  <p className="mt-2 text-muted-foreground">
-                    Typically 2-3 business days for short-form content, 5-7 days
-                    for long-form videos. Rush delivery available upon request.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="pt-6">
-                  <h4 className="font-semibold text-foreground">
-                    Can I upgrade or downgrade my plan?
-                  </h4>
-                  <p className="mt-2 text-muted-foreground">
-                    Yes! You can change your plan at any time. Changes take effect
-                    at the start of your next billing cycle.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="pt-6">
-                  <h4 className="font-semibold text-foreground">
-                    What video formats do you deliver?
-                  </h4>
-                  <p className="mt-2 text-muted-foreground">
-                    We deliver in all standard formats (MP4, MOV) optimized for
-                    your target platform - YouTube, TikTok, Instagram, etc.
-                  </p>
-                </CardContent>
-              </Card>
+            <SectionHeading
+              badge="FAQ"
+              title="Frequently Asked Questions"
+              description="Everything you need to know about working with us"
+              align="center"
+            />
+            <div className="space-y-6 mt-12">
+              <Accordion type="single" collapsible className="w-full">
+                {faqs.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger>{faq.question}</AccordionTrigger>
+                    <AccordionContent>{faq.answer}</AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
           </div>
         </Container>
