@@ -23,7 +23,7 @@ export const CallToAction = ({
         <p className="text-muted-foreground mb-8 max-w-lg mx-auto text-lg">
           {description}
         </p>
-        <Button size="lg" asChild>
+        <Button asChild>
           <Link href="/contact">{buttonText}</Link>
         </Button>
       </div>
