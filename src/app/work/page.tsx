@@ -12,13 +12,16 @@ import { Badge } from "@/components/ui/badge";
 import {
   portfolioCategories,
   portfolioItems,
+  getEmbedUrl,
+  getThumbnail,
   type PortfolioCategory,
+  type PortfolioItem,
 } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
 export default function WorkPage() {
   const [activeCategory, setActiveCategory] = useState<PortfolioCategory>("all");
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<PortfolioItem | null>(null);
 
   const filteredItems =
     activeCategory === "all"
@@ -69,14 +72,22 @@ export default function WorkPage() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
                   className="group cursor-pointer"
-                  onClick={() => setSelectedVideo(item.videoUrl)}
+                  onClick={() => setSelectedVideo(item)}
                 >
                   <div className="relative aspect-video rounded-2xl overflow-hidden bg-card border border-border group-hover:border-primary/50 transition-all">
-                    {/* Gradient placeholder for thumbnail */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-[#8A5CFF]/20" />
+                    {/* Thumbnail */}
+                    {getThumbnail(item) ? (
+                      <img
+                        src={getThumbnail(item)}
+                        alt={item.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-[#8A5CFF]/20" />
+                    )}
 
                     {/* Play button overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
                       <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
                         <Play className="w-6 h-6 text-white fill-white ml-1" />
                       </div>
@@ -94,11 +105,6 @@ export default function WorkPage() {
                     <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
                       {item.title}
                     </h3>
-                    {item.client && (
-                      <p className="text-sm text-muted-foreground">
-                        {item.client}
-                      </p>
-                    )}
                   </div>
                 </motion.div>
               ))}
@@ -142,7 +148,7 @@ export default function WorkPage() {
                 <X className="w-8 h-8" />
               </Button>
               <iframe
-                src={selectedVideo}
+                src={getEmbedUrl(selectedVideo)}
                 className="w-full h-full rounded-xl"
                 allowFullScreen
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
