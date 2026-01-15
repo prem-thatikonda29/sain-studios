@@ -1,3 +1,7 @@
 node_modules
 .next
 .claude
+
+# Environment variables
+.env.local
+.env*.local
