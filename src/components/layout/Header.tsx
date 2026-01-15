@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Play } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Container } from "./Container";
 import { Button } from "@/components/ui/button";
 import { navigationLinks } from "@/data/navigation";
@@ -38,10 +39,16 @@ export function Header() {
               href="/"
               className="flex items-center gap-2 text-foreground font-semibold text-xl tracking-tight"
             >
-              <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
-                <Play className="w-4 h-4 text-primary fill-primary" />
+              <div className="relative w-20 h-20">
+                <Image
+                  src="/logos/sain-white.png"
+                  alt="Sain Studios"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
-              <span>SAIN STUDIOS</span>
+              {/* <span>SAIN STUDIOS</span> */}
             </Link>
 
             {/* Desktop Navigation */}

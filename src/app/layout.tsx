@@ -34,6 +34,20 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      {
+        media: "(prefers-color-scheme: light)",
+        url: "/logos/sain-black.svg",
+        href: "/logos/sain-black.svg",
+      },
+      {
+        media: "(prefers-color-scheme: dark)",
+        url: "/logos/sain-white.svg",
+        href: "/logos/sain-white.svg",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

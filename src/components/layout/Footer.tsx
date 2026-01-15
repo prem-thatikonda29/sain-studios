@@ -1,24 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { Play, Instagram, MessageCircle } from "lucide-react";
+import Image from "next/image";
+import { Instagram, MessageCircle } from "lucide-react";
 import { Container } from "./Container";
 import { Button } from "@/components/ui/button";
-
-const footerLinks = {
-  pages: [
-    { href: "/work", label: "Work" },
-    { href: "/services", label: "Services" },
-    { href: "/process", label: "Process" },
-    { href: "/pricing", label: "Pricing" },
-  ],
-  company: [
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-  ],
-};
+import { navigationLinks } from "@/data/navigation";
 
 export function Footer() {
+  const pagesLinks = navigationLinks.filter(
+    (link) => !["Home", "About", "Contact"].includes(link.label)
+  );
+  const companyLinks = navigationLinks.filter((link) =>
+    ["About", "Contact"].includes(link.label)
+  );
+
   return (
     <footer className="border-t border-border bg-card/30">
       <Container className="py-16 md:py-20">
@@ -27,12 +23,17 @@ export function Footer() {
           <div className="md:col-span-1">
             <Link
               href="/"
-              className="flex items-center gap-2 text-foreground font-semibold text-xl tracking-tight mb-4"
+              className="flex flex-col items-start justify-start gap-2 text-foreground font-semibold text-xl tracking-tight mb-4"
             >
-              <div className="w-7 h-7 rounded-lg bg-primary/20 flex items-center justify-center">
-                <Play className="w-3.5 h-3.5 text-primary fill-primary" />
+              <div className="relative w-20 h-20">
+                <Image
+                  src="/logos/sain-white.png"
+                  alt="Sain Studios"
+                  fill
+                  className="object-contain"
+                />
               </div>
-              <span>SAIN STUDIOS</span>
+              <span>Sain Studios</span>
             </Link>
           </div>
 
@@ -42,7 +43,7 @@ export function Footer() {
               Pages
             </h3>
             <ul className="space-y-3">
-              {footerLinks.pages.map((link) => (
+              {pagesLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -61,7 +62,7 @@ export function Footer() {
               Company
             </h3>
             <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
+              {companyLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

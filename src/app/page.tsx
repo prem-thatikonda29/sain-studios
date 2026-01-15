@@ -14,7 +14,6 @@ export default function Home() {
         <Hero />
         <ServicesOverview />
         <PortfolioPreview />
-
         <CTASection />
       </main>
       <Footer />

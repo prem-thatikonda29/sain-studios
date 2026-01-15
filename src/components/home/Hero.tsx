@@ -20,7 +20,7 @@ export function Hero() {
             transition={{ duration: 0.6 }}
           >
             <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 hover:bg-primary/10">
-              Premium Video Content Creation
+              Sain Studios
             </Badge>
           </motion.div>
 
